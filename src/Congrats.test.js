@@ -7,9 +7,21 @@ import Congrats from "./Congrats";
 Enzyme.configure({ adapter: new EnzymeAdapter() });
 
 describe("<Congrats />", () => {
-  it("renders without error", () => {});
+  it("renders without error", () => {
+    const wrapper = shallow(<Congrats />);
+    const congratsComponent = wrapper.find("[data-test='congrats-component']");
+    expect(congratsComponent.length).toBe(1);
+  });
 
-  it("renders no text when success prop is false", () => {});
+  it("renders no text when success prop is false", () => {
+    const wrapper = shallow(<Congrats success={false} />);
+    const noTextMessage = wrapper.find("[data-test='congrats-component']");
+    expect(noTextMessage.text()).toBe("");
+  });
 
-  it("renders a congrats message when success prop is true", () => {});
+  it("renders a congrats message when success prop is true", () => {
+    const wrapper = shallow(<Congrats success={true} />);
+    const congratsMessage = wrapper.find("[data-test='congrats-message']");
+    expect(congratsMessage.text().length).not.toBe(0);
+  });
 });
