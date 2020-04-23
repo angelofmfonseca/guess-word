@@ -9,7 +9,7 @@ Enzyme.configure({ adapter: new EnzymeAdapter() });
 
 describe("<Congrats />", () => {
   it("renders without error", () => {
-    const wrapper = shallow(<Congrats />);
+    const wrapper = shallow(<Congrats success={false} />);
     const congratsComponent = wrapper.find("[data-test='congrats-component']");
     expect(congratsComponent.length).toBe(1);
   });
