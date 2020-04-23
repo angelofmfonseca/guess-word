@@ -5,7 +5,7 @@ export default function Congrats(props) {
     return (
       <section className="Congrats" data-test="congrats-component">
         <span data-test="congrats-message">
-          Congratilations!!! You gessed the word!!!
+          Congratulations!!! You guessed the word!!!
         </span>
       </section>
     );
