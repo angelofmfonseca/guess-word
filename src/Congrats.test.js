@@ -32,7 +32,7 @@ describe("<Congrats />", () => {
       Congrats.propTypes,
       expectedProps,
       "prop",
-      Congrats.name
+      Congrats
     );
     expect(propsError).toBeUndefined();
   });
