@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import "./Congrats.css";
+
 export default function Congrats(props) {
   if (props.success) {
     return (

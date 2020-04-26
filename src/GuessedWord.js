@@ -1,12 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import "./GuessedWord.css";
+
 export default function GuessedWord(props) {
   return (
     <section className="GuessedWord" data-test="guessed-word-component">
       {props.words ? (
         <div data-test="guess-area">
-          <h3>Guessed Words</h3>
+          <h3 className="guessTitle">Guessed Words</h3>
           <table>
             <thead>
               <tr>
