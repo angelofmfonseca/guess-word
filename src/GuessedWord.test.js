@@ -7,26 +7,53 @@ import GuessedWord from "./GuessedWord";
 
 Enzyme.configure({ adapter: new EnzymeAdapter() });
 
+const guess = {
+  guessedWords: [
+    {
+      guessedWord: "train",
+      letterMatchCount: 3,
+    },
+  ],
+};
+
 describe("<GuessedWord />", () => {
   it("renders without errors", () => {
     const wrapper = shallow(<GuessedWord />);
+    const guessedWordComponent = wrapper.find(
+      "[data-test='guessed-word-component']"
+    );
+    expect(guessedWordComponent.length).toBe(1);
   });
 
   it("does not throw warnings with expected props", () => {
-    const defaultProps = {
-      guessedWords: [
-        {
-          guessedWord: "train",
-          letterMatchCount: 3,
-        },
-      ],
-    };
     const propsError = checkPropTypes(
       GuessedWord.propTypes,
-      defaultProps,
+      guess,
       "prop",
       GuessedWord
     );
     expect(propsError).toBeUndefined();
+  });
+
+  describe("if there are no words guessed", () => {
+    it("renders without errors", () => {
+      const wrapper = shallow(<GuessedWord guess={[]} />);
+      const guessedWordComponent = wrapper.find(
+        "[data-test='guessed-word-component']"
+      );
+      expect(guessedWordComponent.length).toBe(1);
+    });
+
+    it("renders instructions to guess a word", () => {
+      const wrapper = shallow(<GuessedWord guess={[]} />);
+      const guessWordInstructions = wrapper.find(
+        "[data-test='guess-word-instructions']"
+      );
+      expect(guessWordInstructions.text().length).not.toBe(0);
+    });
+  });
+
+  describe("if there are words guessed", () => {
+    it("renders without erros", () => {});
   });
 });
