@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import GuessedWord from "./GuessedWord";
-import Congrats from "./Congrats";
+import GuessedWord from "../GuessedWord/GuessedWord";
+import Congrats from "../Congrats/Congrats";
 import "./App.css";
 
 export default class App extends Component {
