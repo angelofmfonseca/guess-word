@@ -6,7 +6,7 @@ export default function GuessedWord(props) {
     <section className="GuessedWord" data-test="guessed-word-component">
       {props.words ? (
         <div data-test="guess-area">
-          <h3>Guessed Words:</h3>
+          <h3>Guessed Words</h3>
           <table>
             <thead>
               <tr>
