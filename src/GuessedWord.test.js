@@ -36,8 +36,13 @@ describe("<GuessedWord />", () => {
   });
 
   describe("if there are no words guessed", () => {
+    let wrapper;
+
+    beforeEach(() => {
+      wrapper = shallow(<GuessedWord guess={[]} />);
+    });
+
     it("renders without errors", () => {
-      const wrapper = shallow(<GuessedWord guess={[]} />);
       const guessedWordComponent = wrapper.find(
         "[data-test='guessed-word-component']"
       );
@@ -45,7 +50,6 @@ describe("<GuessedWord />", () => {
     });
 
     it("renders instructions to guess a word", () => {
-      const wrapper = shallow(<GuessedWord guess={[]} />);
       const guessWordInstructions = wrapper.find(
         "[data-test='guess-word-instructions']"
       );
