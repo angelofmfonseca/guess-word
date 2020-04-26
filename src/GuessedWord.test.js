@@ -58,6 +58,33 @@ describe("<GuessedWord />", () => {
   });
 
   describe("if there are words guessed", () => {
-    it("renders without erros", () => {});
+    let wrapper;
+    const words = [
+      { guessedWord: "car", letterMatchCount: 3 },
+      { guessedWord: "bus", letterMatchCount: 1 },
+      { guessedWord: "plane", letterMatchCount: 5 },
+      { guessedWord: "train", letterMatchCount: 2 },
+    ];
+
+    beforeEach(() => {
+      wrapper = shallow(<GuessedWord words={words} />);
+    });
+
+    it("renders without erros", () => {
+      const guessedWordComponent = wrapper.find(
+        "[data-test='guessed-word-component']"
+      );
+      expect(guessedWordComponent.length).toBe(1);
+    });
+
+    it("renders guess word section", () => {
+      const guessedWordsArea = wrapper.find("[data-test='guess-area']");
+      expect(guessedWordsArea.length).toBe(1);
+    });
+
+    it("displays the correct number of guessed words", () => {
+      const numberOfGuesses = wrapper.find("[data-test='single-guess']");
+      expect(numberOfGuesses.length).toBe(words.length);
+    });
   });
 });
