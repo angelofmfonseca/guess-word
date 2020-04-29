@@ -2,7 +2,7 @@ import { actionTypes } from "../actions/index";
 import successReducer from "./successReducer";
 
 it("returns default initial state of false when no action is passed", () => {
-  const newState = successReducer();
+  const newState = successReducer(undefined, {});
   expect(newState).toBe(false);
 });
 
