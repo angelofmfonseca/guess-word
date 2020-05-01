@@ -2,6 +2,15 @@ import React from "react";
 import { shallow } from "enzyme";
 
 import Input from "./input";
+import { storeFactory } from "../utils/testUtils";
+
+const setup = (initialState = {}) => {
+  const store = storeFactory(initialState);
+  const wrapper = shallow(<Input store={store} />)
+    .dive()
+    .dive();
+  return wrapper;
+};
 
 describe("render", () => {
   describe("the word has not been guessed", () => {
