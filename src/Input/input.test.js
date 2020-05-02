@@ -40,11 +40,22 @@ describe("render", () => {
   });
 
   describe("the word has been guessed", () => {
-    it("renders the component without errors", () => {});
+    it("renders the component without errors", () => {
+      const inputComponent = wrapper.find("[data-test='component-input']");
+      expect(inputComponent.length).toBe(1);
+    });
 
-    it("does not render the input box", () => {});
+    it("does not render the input box", () => {
+      const noInputBox = wrapper.find("[data-test='component-no-input-box']");
+      expect(noInputBox.length).toBe(0);
+    });
 
-    it("does not render the submit button", () => {});
+    it("does not render the submit button", () => {
+      const noSubmitButton = wrapper.find(
+        "[data-test='component-no-submit-button']"
+      );
+      expect(noSubmitButton.length).toBe(0);
+    });
   });
 });
 
