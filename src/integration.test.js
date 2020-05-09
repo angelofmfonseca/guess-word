@@ -21,7 +21,7 @@ describe("guessWord action dispatcher", () => {
         success: false,
         guessedWords: [
           {
-            guessedWords: unsuccessfulGuess,
+            guessedWord: unsuccessfulGuess,
             letterMatchCount: 3,
           },
         ],
@@ -29,12 +29,64 @@ describe("guessWord action dispatcher", () => {
       expect(newState).toEqual(expectedState);
     });
 
-    it("updates state correctly for successful guess ", () => {});
+    it("updates state correctly for successful guess ", () => {
+      store.dispatch(guessWord(secretWord));
+      const newState = store.getState();
+      const expectedState = {
+        secretWord,
+        success: true,
+        guessedWords: [
+          {
+            guessedWord: secretWord,
+            letterMatchCount: 5,
+          },
+        ],
+      };
+      expect(newState).toEqual(expectedState);
+    });
   });
 
   describe("some guessed word", () => {
-    it("updates state correctly for unsuccessful guess", () => {});
+    const guessedWords = [{ guessedWord: "agile", letterMatchCount: 1 }];
+    const initialState = { guessedWords, secretWord };
+    let store;
 
-    it("updates state correctly for successful guess", () => {});
+    beforeEach(() => {
+      store = storeFactory(initialState);
+    });
+
+    it("updates state correctly for unsuccessful guess", () => {
+      store.dispatch(guessWord(unsuccessfulGuess));
+      const newState = store.getState();
+      const expectedState = {
+        secretWord,
+        success: false,
+        guessedWords: [
+          ...guessedWords,
+          {
+            guessedWord: unsuccessfulGuess,
+            letterMatchCount: 3,
+          },
+        ],
+      };
+      expect(newState).toEqual(expectedState);
+    });
+
+    it("updates state correctly for successful guess", () => {
+      store.dispatch(guessWord(secretWord));
+      const newState = store.getState();
+      const expectedState = {
+        secretWord,
+        success: true,
+        guessedWords: [
+          ...guessedWords,
+          {
+            guessedWord: secretWord,
+            letterMatchCount: 5,
+          },
+        ],
+      };
+      expect(newState).toEqual(expectedState);
+    });
   });
 });
