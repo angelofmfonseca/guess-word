@@ -26,7 +26,7 @@ describe("guessWord action dispatcher", () => {
           },
         ],
       };
-      expectedState(newState).toEqual(expectedState);
+      expect(newState).toEqual(expectedState);
     });
 
     it("updates state correctly for successful guess ", () => {});
