@@ -85,9 +85,9 @@ describe("guessWord action creator call", () => {
       guessWord: guessWordMock,
     };
     wrapper = shallow(<UnconnectedInput {...props} />);
-    wrapper.setState({ currentGuess: "guessedWord" });
+    wrapper.setState({ currentGuess: guessedWord });
     const submitButton = wrapper.find("[data-test='component-submit-button']");
-    submitButton.simulate("click");
+    submitButton.simulate("click", { preventDefault() {} });
   });
 
   it("calls guessWord when button is clicked", () => {
