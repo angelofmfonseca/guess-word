@@ -13,12 +13,14 @@ export class UnconnectedApp extends Component {
   }
 
   render() {
+    const { secretWord, success, guessedWords } = this.props;
     return (
       <section className="App">
         <h1 className="appTitle">Guess Word Game</h1>
-        <Congrats success={this.props.success} />
+        <div>The secret word is {secretWord}</div>
+        <Congrats success={success} />
         <Input />
-        <GuessedWord words={[this.props.guessedWords]} />
+        <GuessedWord words={[guessedWords]} />
       </section>
     );
   }
